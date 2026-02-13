@@ -22,13 +22,13 @@
     .container {
       max-width: 500px;
       margin: 0 auto;
-      padding: 20px;
+      padding: 15px;
       text-align: center;
     }
     
     h1 {
       color: #e75480;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       margin-bottom: 10px;
       text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
     }
@@ -46,113 +46,26 @@
     .character-stage {
       background: linear-gradient(180deg, #fff5f8 0%, #ffe4ec 100%);
       border-radius: 20px;
-      padding: 20px;
-      margin: 15px 0;
+      padding: 15px;
+      margin: 10px 0;
       box-shadow: 0 8px 32px rgba(231, 84, 128, 0.2);
-      position: relative;
-      min-height: 340px;
-    }
-    
-    .character {
-      position: relative;
-      width: 220px;
-      height: 320px;
-      margin: 0 auto;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    /* Layered character parts */
-    .head-area {
-      position: relative;
-      width: 80px;
-      height: 70px;
-      display: flex;
-      align-items: center;
       justify-content: center;
-    }
-    
-    .accessory-top {
-      position: absolute;
-      top: -15px;
-      font-size: 30px;
-      z-index: 10;
-      transition: all 0.3s ease;
-    }
-    
-    .face {
-      font-size: 55px;
-      line-height: 1;
-    }
-    
-    .outfit-area {
-      display: flex;
-      flex-direction: column;
       align-items: center;
-      margin-top: 5px;
+      min-height: 320px;
     }
     
-    .body-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .arm {
-      font-size: 35px;
-      transition: all 0.3s ease;
-    }
-    
-    .arm.left {
-      transform: scaleX(-1);
-    }
-    
-    .top-clothing {
-      font-size: 65px;
-      line-height: 1;
-      transition: all 0.3s ease;
-    }
-    
-    .bottom-clothing {
-      font-size: 60px;
-      line-height: 1;
-      margin-top: -8px;
-      transition: all 0.3s ease;
-    }
-    
-    .legs-area {
-      display: flex;
-      gap: 8px;
-      margin-top: -5px;
-    }
-    
-    .leg {
-      font-size: 50px;
-      transition: all 0.3s ease;
-    }
-    
-    .shoes-area {
-      display: flex;
-      gap: 5px;
-      margin-top: -10px;
-    }
-    
-    .shoe {
-      font-size: 30px;
-      transition: all 0.3s ease;
-    }
-    
-    .shoe.left {
-      transform: scaleX(-1);
+    .character-svg {
+      width: 180px;
+      height: 290px;
     }
     
     /* Clothing tabs */
     .tabs {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       justify-content: center;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
       flex-wrap: wrap;
     }
     
@@ -160,8 +73,8 @@
       background: white;
       border: 2px solid #ffb6c1;
       border-radius: 20px;
-      padding: 8px 16px;
-      font-size: 0.9rem;
+      padding: 8px 14px;
+      font-size: 0.85rem;
       cursor: pointer;
       transition: all 0.2s;
       color: #e75480;
@@ -179,45 +92,54 @@
     .items-panel {
       background: white;
       border-radius: 20px;
-      padding: 15px;
+      padding: 12px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
     
     .items-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
+      gap: 8px;
     }
     
     .item {
       background: linear-gradient(135deg, #fff5f8 0%, #ffe4ec 100%);
       border: 2px solid #ffb6c1;
-      border-radius: 15px;
-      padding: 12px 8px;
-      font-size: 2rem;
+      border-radius: 12px;
+      padding: 8px;
       cursor: pointer;
       transition: all 0.2s;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     
     .item:hover {
-      transform: scale(1.1);
+      transform: scale(1.08);
       box-shadow: 0 4px 15px rgba(231, 84, 128, 0.3);
     }
     
     .item.selected {
       background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
       border-color: #e75480;
-      box-shadow: 0 0 20px rgba(231, 84, 128, 0.4);
+      box-shadow: 0 0 15px rgba(231, 84, 128, 0.4);
     }
     
     .item:active {
       transform: scale(0.95);
     }
     
-    /* None option */
-    .item.none-option {
-      font-size: 1rem;
-      color: #999;
+    .color-swatch {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    
+    .item-icon {
+      font-size: 1.8rem;
     }
     
     /* Action buttons */
@@ -225,7 +147,7 @@
       display: flex;
       gap: 10px;
       justify-content: center;
-      margin-top: 15px;
+      margin-top: 12px;
     }
     
     .btn {
@@ -233,8 +155,8 @@
       color: white;
       border: none;
       border-radius: 25px;
-      padding: 12px 24px;
-      font-size: 1rem;
+      padding: 12px 20px;
+      font-size: 0.95rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s;
@@ -261,153 +183,356 @@
       0%, 100% { transform: translateY(0) rotate(0deg); }
       50% { transform: translateY(-20px) rotate(180deg); }
     }
+    
+    @keyframes sparkle-fly {
+      0% { transform: scale(0) rotate(0deg); opacity: 1; }
+      50% { transform: scale(1.5) rotate(180deg); opacity: 1; }
+      100% { transform: scale(0) rotate(360deg) translateY(-50px); opacity: 0; }
+    }
   </style>
 </head>
 <body>
-  <!-- Floating sparkles decoration -->
   <div class="floating-sparkle" style="top: 10%; left: 10%; font-size: 20px; animation-delay: 0s;">✨</div>
   <div class="floating-sparkle" style="top: 20%; right: 15%; font-size: 16px; animation-delay: 0.5s;">💖</div>
-  <div class="floating-sparkle" style="top: 60%; left: 5%; font-size: 18px; animation-delay: 1s;">⭐</div>
+  <div class="floating-sparkle" style="top: 70%; left: 5%; font-size: 18px; animation-delay: 1s;">⭐</div>
   <div class="floating-sparkle" style="top: 80%; right: 10%; font-size: 22px; animation-delay: 1.5s;">✨</div>
   
   <div class="container">
     <h1><span class="sparkle">✨</span> Sparkle Dress Up <span class="sparkle">✨</span></h1>
     
     <div class="character-stage">
-      <div class="character">
-        <!-- Head with accessory on top -->
-        <div class="head-area">
-          <div class="accessory-top" id="accessory-display"></div>
-          <div class="face" id="face-display">👩</div>
-        </div>
+      <svg class="character-svg" viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg">
+        <!-- Hair Back (behind head) -->
+        <g id="hair-back"></g>
         
-        <!-- Body with clothing -->
-        <div class="outfit-area">
-          <div class="body-row">
-            <div class="arm left">💪</div>
-            <div class="top-clothing" id="top-display"></div>
-            <div class="arm right">💪</div>
-          </div>
-          <div class="bottom-clothing" id="bottom-display"></div>
-          <div class="legs-area">
-            <div class="leg">🦵</div>
-            <div class="leg" style="transform: scaleX(-1);">🦵</div>
-          </div>
-          <div class="shoes-area">
-            <div class="shoe left" id="shoe-left"></div>
-            <div class="shoe right" id="shoe-right"></div>
-          </div>
-        </div>
-      </div>
+        <!-- Body -->
+        <g id="body">
+          <!-- Legs -->
+          <path id="left-leg" d="M75 185 L70 270 Q70 280 80 280 L85 280 Q90 280 90 270 L90 185" fill="#FFDAB9"/>
+          <path id="right-leg" d="M110 185 L110 270 Q110 280 115 280 L120 280 Q130 280 130 270 L125 185" fill="#FFDAB9"/>
+          
+          <!-- Arms -->
+          <path id="left-arm" d="M55 115 Q35 120 30 150 Q28 165 35 170 Q42 175 48 165 Q55 145 60 130" fill="#FFDAB9"/>
+          <path id="right-arm" d="M145 115 Q165 120 170 150 Q172 165 165 170 Q158 175 152 165 Q145 145 140 130" fill="#FFDAB9"/>
+          
+          <!-- Torso -->
+          <path id="torso" d="M60 105 Q55 110 55 130 L55 185 Q55 190 100 190 Q145 190 145 185 L145 130 Q145 110 140 105 Z" fill="#FFDAB9"/>
+          
+          <!-- Neck -->
+          <rect id="neck" x="88" y="85" width="24" height="25" rx="5" fill="#FFDAB9"/>
+          
+          <!-- Head -->
+          <ellipse id="head" cx="100" cy="55" rx="42" ry="48" fill="#FFDAB9"/>
+        </g>
+        
+        <!-- Face -->
+        <g id="face">
+          <!-- Eyes -->
+          <ellipse cx="82" cy="52" rx="8" ry="10" fill="white"/>
+          <ellipse cx="118" cy="52" rx="8" ry="10" fill="white"/>
+          <circle cx="84" cy="54" r="5" fill="#4a3728"/>
+          <circle cx="120" cy="54" r="5" fill="#4a3728"/>
+          <circle cx="85" cy="52" r="2" fill="white"/>
+          <circle cx="121" cy="52" r="2" fill="white"/>
+          
+          <!-- Eyebrows -->
+          <path d="M74 40 Q82 36 92 40" stroke="#4a3728" stroke-width="2" fill="none"/>
+          <path d="M108 40 Q118 36 126 40" stroke="#4a3728" stroke-width="2" fill="none"/>
+          
+          <!-- Nose -->
+          <path d="M100 58 Q103 65 100 70" stroke="#dba090" stroke-width="2" fill="none"/>
+          
+          <!-- Mouth -->
+          <path d="M88 78 Q100 88 112 78" stroke="#e75480" stroke-width="3" fill="none" stroke-linecap="round"/>
+          
+          <!-- Blush -->
+          <ellipse cx="70" cy="68" rx="10" ry="6" fill="#ffb6c1" opacity="0.5"/>
+          <ellipse cx="130" cy="68" rx="10" ry="6" fill="#ffb6c1" opacity="0.5"/>
+        </g>
+        
+        <!-- Hair Front -->
+        <g id="hair-front"></g>
+        
+        <!-- Top Clothing -->
+        <g id="top-clothing"></g>
+        
+        <!-- Bottom Clothing -->
+        <g id="bottom-clothing"></g>
+        
+        <!-- Shoes -->
+        <g id="shoes"></g>
+        
+        <!-- Accessories -->
+        <g id="accessories"></g>
+      </svg>
     </div>
     
     <div class="tabs">
-      <button class="tab active" data-category="skin">👩 Skin</button>
-      <button class="tab" data-category="tops">👚 Tops</button>
-      <button class="tab" data-category="bottoms">👖 Bottoms</button>
+      <button class="tab active" data-category="skin">🎨 Skin</button>
+      <button class="tab" data-category="hair">💇 Hair</button>
+      <button class="tab" data-category="tops">👚 Top</button>
+      <button class="tab" data-category="bottoms">👖 Bottom</button>
       <button class="tab" data-category="shoes">👠 Shoes</button>
       <button class="tab" data-category="accessories">👑 Bling</button>
     </div>
     
     <div class="items-panel">
-      <div class="items-grid" id="items-grid">
-        <!-- Items loaded by JS -->
-      </div>
+      <div class="items-grid" id="items-grid"></div>
     </div>
     
     <div class="actions">
-      <button class="btn reset" onclick="resetOutfit()">🔄 Start Over</button>
-      <button class="btn" onclick="randomize()">🎲 Surprise Me!</button>
+      <button class="btn reset" onclick="resetOutfit()">🔄 Reset</button>
+      <button class="btn" onclick="randomize()">🎲 Random!</button>
     </div>
   </div>
 
   <script>
-    // Skin tone modifiers for arms/legs
-    const skinTones = {
-      '👩': { arm: '💪', leg: '🦵' },
-      '👩🏻': { arm: '💪🏻', leg: '🦵🏻' },
-      '👩🏼': { arm: '💪🏼', leg: '🦵🏼' },
-      '👩🏽': { arm: '💪🏽', leg: '🦵🏽' },
-      '👩🏾': { arm: '💪🏾', leg: '🦵🏾' },
-      '👩🏿': { arm: '💪🏿', leg: '🦵🏿' },
-      '👧': { arm: '💪', leg: '🦵' },
-      '👧🏻': { arm: '💪🏻', leg: '🦵🏻' },
-    };
+    // Skin tones
+    const skinTones = [
+      { name: 'Light', color: '#FFEBD2' },
+      { name: 'Fair', color: '#FFDAB9' },
+      { name: 'Medium', color: '#DEB887' },
+      { name: 'Tan', color: '#C8A278' },
+      { name: 'Brown', color: '#A0785A' },
+      { name: 'Dark', color: '#6B4423' },
+    ];
     
-    // All the items for each category
-    const items = {
-      skin: ['👩', '👩🏻', '👩🏼', '👩🏽', '👩🏾', '👩🏿', '👧', '👧🏻'],
-      tops: ['👚', '👕', '👗', '👘', '🥻', '🧥', '👙', '🎽'],
-      bottoms: ['👖', '🩳', '🩱', '👗', '🥿', '🩰', '🩲', '🩴'],
-      shoes: ['👠', '👟', '👢', '🥿', '👡', '👞', '🩴', '🩰'],
-      accessories: ['👑', '🎀', '💎', '🎩', '👒', '🌺', '🌸', '⭐']
-    };
+    // Hair styles with SVG paths
+    const hairStyles = [
+      { 
+        name: 'Long', 
+        color: '#4a3728',
+        back: '<ellipse cx="100" cy="60" rx="50" ry="55" fill="COLOR"/><path d="M50 60 Q45 150 55 200 Q60 220 70 200 L70 100 Q70 70 70 60" fill="COLOR"/><path d="M150 60 Q155 150 145 200 Q140 220 130 200 L130 100 Q130 70 130 60" fill="COLOR"/>',
+        front: '<path d="M58 25 Q70 5 100 5 Q130 5 142 25 Q145 35 145 50 L140 50 Q135 25 100 20 Q65 25 60 50 L55 50 Q55 35 58 25" fill="COLOR"/>'
+      },
+      { 
+        name: 'Short', 
+        color: '#2c1810',
+        back: '<ellipse cx="100" cy="45" rx="48" ry="40" fill="COLOR"/>',
+        front: '<path d="M55 30 Q70 5 100 8 Q130 5 145 30 Q150 50 145 55 L140 45 Q135 25 100 22 Q65 25 60 45 L55 55 Q50 50 55 30" fill="COLOR"/>'
+      },
+      { 
+        name: 'Ponytail', 
+        color: '#8B4513',
+        back: '<ellipse cx="100" cy="45" rx="46" ry="38" fill="COLOR"/><ellipse cx="100" cy="5" rx="15" ry="20" fill="COLOR"/><path d="M90 -10 Q100 -40 110 -10 Q115 10 100 15 Q85 10 90 -10" fill="COLOR"/>',
+        front: '<path d="M58 25 Q70 8 100 8 Q130 8 142 25 Q145 40 140 50 L135 40 Q130 25 100 22 Q70 25 65 40 L60 50 Q55 40 58 25" fill="COLOR"/>'
+      },
+      { 
+        name: 'Curly', 
+        color: '#1a1a1a',
+        back: '<circle cx="60" cy="50" r="25" fill="COLOR"/><circle cx="140" cy="50" r="25" fill="COLOR"/><circle cx="100" cy="30" r="30" fill="COLOR"/><circle cx="75" cy="35" r="20" fill="COLOR"/><circle cx="125" cy="35" r="20" fill="COLOR"/>',
+        front: '<circle cx="70" cy="30" r="15" fill="COLOR"/><circle cx="130" cy="30" r="15" fill="COLOR"/><circle cx="100" cy="20" r="18" fill="COLOR"/><circle cx="85" cy="25" r="12" fill="COLOR"/><circle cx="115" cy="25" r="12" fill="COLOR"/>'
+      },
+      { 
+        name: 'Pigtails', 
+        color: '#d4a574',
+        back: '<ellipse cx="100" cy="45" rx="46" ry="38" fill="COLOR"/>',
+        front: '<path d="M58 25 Q70 8 100 8 Q130 8 142 25 Q145 40 140 50 L135 40 Q130 25 100 22 Q70 25 65 40 L60 50 Q55 40 58 25" fill="COLOR"/><ellipse cx="35" cy="60" rx="18" ry="35" fill="COLOR"/><ellipse cx="165" cy="60" rx="18" ry="35" fill="COLOR"/>'
+      },
+      { 
+        name: 'Bun', 
+        color: '#ff6b6b',
+        back: '<ellipse cx="100" cy="45" rx="46" ry="38" fill="COLOR"/><circle cx="100" cy="-5" r="22" fill="COLOR"/>',
+        front: '<path d="M58 28 Q70 10 100 10 Q130 10 142 28 Q145 45 140 55 L135 45 Q130 28 100 25 Q70 28 65 45 L60 55 Q55 45 58 28" fill="COLOR"/>'
+      },
+    ];
+    
+    // Hair colors
+    const hairColors = ['#4a3728', '#2c1810', '#1a1a1a', '#8B4513', '#d4a574', '#ff6b6b', '#9b59b6', '#3498db'];
+    
+    // Tops
+    const tops = [
+      { name: 'T-Shirt', svg: '<path d="M55 108 L45 115 L40 145 L55 145 L55 185 Q55 190 100 190 Q145 190 145 185 L145 145 L160 145 L155 115 L145 108 Q140 105 100 105 Q60 105 55 108" fill="COLOR" stroke="STROKE" stroke-width="2"/>', colors: ['#ff9ff3', '#54a0ff', '#5f27cd', '#ff6b6b', '#1dd1a1', '#feca57'] },
+      { name: 'Tank Top', svg: '<path d="M70 105 L65 108 L65 185 Q65 190 100 190 Q135 190 135 185 L135 108 L130 105 Q125 102 100 102 Q75 102 70 105" fill="COLOR" stroke="STROKE" stroke-width="2"/>', colors: ['#ff9ff3', '#fff', '#1dd1a1', '#feca57', '#ff6b6b', '#a0a0ff'] },
+      { name: 'Dress', svg: '<path d="M65 105 L60 110 L55 120 L50 185 L40 260 Q38 270 100 270 Q162 270 160 260 L150 185 L145 120 L140 110 L135 105 Q130 102 100 102 Q70 102 65 105" fill="COLOR" stroke="STROKE" stroke-width="2"/>', colors: ['#ff9ff3', '#a0a0ff', '#ff6b6b', '#feca57', '#1dd1a1', '#54a0ff'] },
+      { name: 'Crop Top', svg: '<path d="M60 105 L50 112 L45 140 L55 140 L58 155 Q60 158 100 158 Q140 158 142 155 L145 140 L155 140 L150 112 L140 105 Q135 102 100 102 Q65 102 60 105" fill="COLOR" stroke="STROKE" stroke-width="2"/>', colors: ['#ff6b6b', '#fff', '#1dd1a1', '#ff9ff3', '#feca57', '#54a0ff'] },
+      { name: 'Sweater', svg: '<path d="M55 108 L30 120 L25 155 L30 160 L55 150 L55 185 Q55 192 100 192 Q145 192 145 185 L145 150 L170 160 L175 155 L170 120 L145 108 Q140 105 100 105 Q60 105 55 108" fill="COLOR" stroke="STROKE" stroke-width="2"/><line x1="55" y1="130" x2="145" y2="130" stroke="STROKE" stroke-width="1" opacity="0.3"/><line x1="55" y1="150" x2="145" y2="150" stroke="STROKE" stroke-width="1" opacity="0.3"/><line x1="55" y1="170" x2="145" y2="170" stroke="STROKE" stroke-width="1" opacity="0.3"/>', colors: ['#ff9ff3', '#feca57', '#a0a0ff', '#1dd1a1', '#ff6b6b', '#ddd'] },
+    ];
+    
+    // Bottoms
+    const bottoms = [
+      { name: 'Jeans', svg: '<path d="M60 188 L55 270 Q55 280 75 280 L85 280 Q95 280 95 270 L100 210 L105 270 Q105 280 115 280 L125 280 Q145 280 145 270 L140 188 Q140 185 100 185 Q60 185 60 188" fill="COLOR" stroke="STROKE" stroke-width="2"/><line x1="100" y1="188" x2="100" y2="210" stroke="STROKE" stroke-width="1"/>', colors: ['#54a0ff', '#2c3e50', '#5f27cd', '#1a1a1a', '#a0a0a0', '#fff'] },
+      { name: 'Skirt', svg: '<path d="M55 185 L45 260 Q43 270 100 270 Q157 270 155 260 L145 185 Q145 182 100 182 Q55 182 55 185" fill="COLOR" stroke="STROKE" stroke-width="2"/>', colors: ['#ff9ff3', '#ff6b6b', '#feca57', '#54a0ff', '#1dd1a1', '#a0a0ff'] },
+      { name: 'Shorts', svg: '<path d="M58 185 L55 225 Q55 230 80 230 L95 230 Q100 225 100 220 Q100 225 105 230 L120 230 Q145 230 145 225 L142 185 Q142 182 100 182 Q58 182 58 185" fill="COLOR" stroke="STROKE" stroke-width="2"/>', colors: ['#54a0ff', '#ff9ff3', '#feca57', '#1dd1a1', '#ff6b6b', '#2c3e50'] },
+      { name: 'Leggings', svg: '<path d="M62 185 L60 270 Q60 278 80 278 L90 278 Q98 278 98 270 L100 200 L102 270 Q102 278 110 278 L120 278 Q140 278 140 270 L138 185 Q138 182 100 182 Q62 182 62 185" fill="COLOR" stroke="STROKE" stroke-width="2"/>', colors: ['#1a1a1a', '#2c3e50', '#5f27cd', '#ff6b6b', '#1dd1a1', '#ff9ff3'] },
+    ];
+    
+    // Shoes
+    const shoeStyles = [
+      { name: 'Heels', svg: '<path d="M65 278 L60 285 L55 300 L60 305 L90 305 L92 295 L88 285 L85 278" fill="COLOR" stroke="STROKE" stroke-width="1"/><path d="M115 278 L112 285 L108 295 L110 305 L140 305 L145 300 L140 285 L135 278" fill="COLOR" stroke="STROKE" stroke-width="1"/>', colors: ['#ff6b6b', '#1a1a1a', '#ff9ff3', '#feca57', '#54a0ff', '#fff'] },
+      { name: 'Sneakers', svg: '<rect x="58" y="278" width="35" height="22" rx="8" fill="COLOR" stroke="STROKE" stroke-width="1"/><rect x="107" y="278" width="35" height="22" rx="8" fill="COLOR" stroke="STROKE" stroke-width="1"/><line x1="63" y1="285" x2="88" y2="285" stroke="STROKE" stroke-width="1"/><line x1="112" y1="285" x2="137" y2="285" stroke="STROKE" stroke-width="1"/>', colors: ['#fff', '#ff6b6b', '#54a0ff', '#1a1a1a', '#1dd1a1', '#ff9ff3'] },
+      { name: 'Boots', svg: '<path d="M63 250 L60 285 L55 300 L90 300 L92 285 L88 250" fill="COLOR" stroke="STROKE" stroke-width="1"/><path d="M112 250 L108 285 L110 300 L145 300 L150 285 L137 250" fill="COLOR" stroke="STROKE" stroke-width="1"/>', colors: ['#5d4037', '#1a1a1a', '#8B4513', '#2c3e50', '#ff6b6b', '#ff9ff3'] },
+      { name: 'Sandals', svg: '<ellipse cx="75" cy="290" rx="18" ry="8" fill="COLOR" stroke="STROKE" stroke-width="1"/><line x1="75" y1="278" x2="75" y2="282" stroke="STROKE" stroke-width="2"/><ellipse cx="125" cy="290" rx="18" ry="8" fill="COLOR" stroke="STROKE" stroke-width="1"/><line x1="125" y1="278" x2="125" y2="282" stroke="STROKE" stroke-width="2"/>', colors: ['#d4a574', '#ff9ff3', '#feca57', '#54a0ff', '#1dd1a1', '#ff6b6b'] },
+    ];
+    
+    // Accessories  
+    const accessoryStyles = [
+      { name: 'Crown', svg: '<path d="M60 15 L70 -5 L85 10 L100 -10 L115 10 L130 -5 L140 15 L135 25 L65 25 Z" fill="#feca57" stroke="#f39c12" stroke-width="2"/><circle cx="100" cy="5" r="5" fill="#e74c3c"/>' },
+      { name: 'Bow', svg: '<path d="M75 5 Q60 -10 70 -20 Q85 -15 100 -10 Q115 -15 130 -20 Q140 -10 125 5 Q115 0 100 5 Q85 0 75 5" fill="#ff9ff3" stroke="#ff6b9d" stroke-width="2"/><circle cx="100" cy="0" r="8" fill="#ff6b9d"/>' },
+      { name: 'Flower', svg: '<circle cx="100" cy="0" r="8" fill="#feca57"/><ellipse cx="100" cy="-18" rx="8" ry="12" fill="#ff9ff3"/><ellipse cx="115" cy="-8" rx="8" ry="12" fill="#ff9ff3" transform="rotate(72 115 -8)"/><ellipse cx="110" cy="10" rx="8" ry="12" fill="#ff9ff3" transform="rotate(144 110 10)"/><ellipse cx="90" cy="10" rx="8" ry="12" fill="#ff9ff3" transform="rotate(-144 90 10)"/><ellipse cx="85" cy="-8" rx="8" ry="12" fill="#ff9ff3" transform="rotate(-72 85 -8)"/>' },
+      { name: 'Tiara', svg: '<path d="M55 25 Q60 15 75 18 Q90 10 100 5 Q110 10 125 18 Q140 15 145 25" fill="none" stroke="#54a0ff" stroke-width="4"/><circle cx="100" cy="8" r="5" fill="#54a0ff"/><circle cx="80" cy="16" r="3" fill="#a0a0ff"/><circle cx="120" cy="16" r="3" fill="#a0a0ff"/>' },
+      { name: 'Cat Ears', svg: '<path d="M55 30 L50 -5 L80 20 Z" fill="#ffd1dc" stroke="#ffb6c1" stroke-width="2"/><path d="M145 30 L150 -5 L120 20 Z" fill="#ffd1dc" stroke="#ffb6c1" stroke-width="2"/><path d="M60 25 L55 5 L75 20 Z" fill="#ff9ff3"/><path d="M140 25 L145 5 L125 20 Z" fill="#ff9ff3"/>' },
+      { name: 'Glasses', svg: '<circle cx="78" cy="52" r="18" fill="none" stroke="#1a1a1a" stroke-width="3"/><circle cx="122" cy="52" r="18" fill="none" stroke="#1a1a1a" stroke-width="3"/><line x1="96" y1="52" x2="104" y2="52" stroke="#1a1a1a" stroke-width="3"/><line x1="60" y1="52" x2="50" y2="48" stroke="#1a1a1a" stroke-width="3"/><line x1="140" y1="52" x2="150" y2="48" stroke="#1a1a1a" stroke-width="3"/>' },
+    ];
     
     // Current outfit state
     let outfit = {
-      skin: '👩',
-      tops: null,
-      bottoms: null,
+      skin: '#FFDAB9',
+      hair: { style: hairStyles[0], color: '#4a3728' },
+      top: null,
+      bottom: null,
       shoes: null,
-      accessories: null
+      accessory: null
     };
     
     let currentCategory = 'skin';
     
-    // Render items for current category
     function renderItems() {
       const grid = document.getElementById('items-grid');
       grid.innerHTML = '';
       
-      // Add "none" option for categories that can be empty
-      if (currentCategory !== 'skin') {
+      if (currentCategory === 'skin') {
+        skinTones.forEach(skin => {
+          const div = document.createElement('div');
+          div.className = 'item' + (outfit.skin === skin.color ? ' selected' : '');
+          div.innerHTML = `<div class="color-swatch" style="background: ${skin.color}"></div>`;
+          div.onclick = (e) => { outfit.skin = skin.color; renderItems(); updateCharacter(); createSparkle(e.clientX, e.clientY); };
+          grid.appendChild(div);
+        });
+      } else if (currentCategory === 'hair') {
+        // Hair styles
+        hairStyles.forEach(style => {
+          const div = document.createElement('div');
+          div.className = 'item' + (outfit.hair.style.name === style.name ? ' selected' : '');
+          div.innerHTML = `<span class="item-icon">💇</span>`;
+          div.onclick = (e) => { outfit.hair.style = style; renderItems(); updateCharacter(); createSparkle(e.clientX, e.clientY); };
+          grid.appendChild(div);
+        });
+        // Hair colors
+        hairColors.forEach(color => {
+          const div = document.createElement('div');
+          div.className = 'item' + (outfit.hair.color === color ? ' selected' : '');
+          div.innerHTML = `<div class="color-swatch" style="background: ${color}"></div>`;
+          div.onclick = (e) => { outfit.hair.color = color; renderItems(); updateCharacter(); createSparkle(e.clientX, e.clientY); };
+          grid.appendChild(div);
+        });
+      } else if (currentCategory === 'tops') {
+        // None option
         const noneDiv = document.createElement('div');
-        noneDiv.className = 'item none-option' + (outfit[currentCategory] === null ? ' selected' : '');
-        noneDiv.textContent = '❌';
-        noneDiv.onclick = () => selectItem(null);
+        noneDiv.className = 'item' + (outfit.top === null ? ' selected' : '');
+        noneDiv.innerHTML = `<span class="item-icon">❌</span>`;
+        noneDiv.onclick = (e) => { outfit.top = null; renderItems(); updateCharacter(); };
         grid.appendChild(noneDiv);
+        
+        tops.forEach(top => {
+          top.colors.forEach(color => {
+            const div = document.createElement('div');
+            const isSelected = outfit.top && outfit.top.name === top.name && outfit.top.color === color;
+            div.className = 'item' + (isSelected ? ' selected' : '');
+            div.innerHTML = `<div class="color-swatch" style="background: ${color}"></div>`;
+            div.onclick = (e) => { outfit.top = { ...top, color }; renderItems(); updateCharacter(); createSparkle(e.clientX, e.clientY); };
+            grid.appendChild(div);
+          });
+        });
+      } else if (currentCategory === 'bottoms') {
+        const noneDiv = document.createElement('div');
+        noneDiv.className = 'item' + (outfit.bottom === null ? ' selected' : '');
+        noneDiv.innerHTML = `<span class="item-icon">❌</span>`;
+        noneDiv.onclick = () => { outfit.bottom = null; renderItems(); updateCharacter(); };
+        grid.appendChild(noneDiv);
+        
+        bottoms.forEach(bottom => {
+          bottom.colors.forEach(color => {
+            const div = document.createElement('div');
+            const isSelected = outfit.bottom && outfit.bottom.name === bottom.name && outfit.bottom.color === color;
+            div.className = 'item' + (isSelected ? ' selected' : '');
+            div.innerHTML = `<div class="color-swatch" style="background: ${color}"></div>`;
+            div.onclick = (e) => { outfit.bottom = { ...bottom, color }; renderItems(); updateCharacter(); createSparkle(e.clientX, e.clientY); };
+            grid.appendChild(div);
+          });
+        });
+      } else if (currentCategory === 'shoes') {
+        const noneDiv = document.createElement('div');
+        noneDiv.className = 'item' + (outfit.shoes === null ? ' selected' : '');
+        noneDiv.innerHTML = `<span class="item-icon">❌</span>`;
+        noneDiv.onclick = () => { outfit.shoes = null; renderItems(); updateCharacter(); };
+        grid.appendChild(noneDiv);
+        
+        shoeStyles.forEach(shoe => {
+          shoe.colors.forEach(color => {
+            const div = document.createElement('div');
+            const isSelected = outfit.shoes && outfit.shoes.name === shoe.name && outfit.shoes.color === color;
+            div.className = 'item' + (isSelected ? ' selected' : '');
+            div.innerHTML = `<div class="color-swatch" style="background: ${color}"></div>`;
+            div.onclick = (e) => { outfit.shoes = { ...shoe, color }; renderItems(); updateCharacter(); createSparkle(e.clientX, e.clientY); };
+            grid.appendChild(div);
+          });
+        });
+      } else if (currentCategory === 'accessories') {
+        const noneDiv = document.createElement('div');
+        noneDiv.className = 'item' + (outfit.accessory === null ? ' selected' : '');
+        noneDiv.innerHTML = `<span class="item-icon">❌</span>`;
+        noneDiv.onclick = () => { outfit.accessory = null; renderItems(); updateCharacter(); };
+        grid.appendChild(noneDiv);
+        
+        accessoryStyles.forEach(acc => {
+          const div = document.createElement('div');
+          div.className = 'item' + (outfit.accessory && outfit.accessory.name === acc.name ? ' selected' : '');
+          div.innerHTML = `<span class="item-icon">${acc.name === 'Crown' ? '👑' : acc.name === 'Bow' ? '🎀' : acc.name === 'Flower' ? '🌸' : acc.name === 'Tiara' ? '💎' : acc.name === 'Cat Ears' ? '🐱' : '👓'}</span>`;
+          div.onclick = (e) => { outfit.accessory = acc; renderItems(); updateCharacter(); createSparkle(e.clientX, e.clientY); };
+          grid.appendChild(div);
+        });
       }
-      
-      items[currentCategory].forEach((item, index) => {
-        const div = document.createElement('div');
-        div.className = 'item' + (outfit[currentCategory] === item ? ' selected' : '');
-        div.textContent = item;
-        div.onclick = (e) => selectItem(item, e);
-        grid.appendChild(div);
-      });
     }
     
-    // Select an item
-    function selectItem(item, event) {
-      outfit[currentCategory] = item;
-      renderItems();
-      updateCharacter();
-      
-      // Little celebration effect
-      if (event) {
-        createSparkle(event.clientX, event.clientY);
-      }
-    }
-    
-    // Update character display
     function updateCharacter() {
-      const skin = outfit.skin || '👩';
-      const skinData = skinTones[skin] || skinTones['👩'];
-      
-      document.getElementById('face-display').textContent = skin;
-      document.getElementById('top-display').textContent = outfit.tops || '';
-      document.getElementById('bottom-display').textContent = outfit.bottoms || '';
-      document.getElementById('shoe-left').textContent = outfit.shoes || '';
-      document.getElementById('shoe-right').textContent = outfit.shoes || '';
-      document.getElementById('accessory-display').textContent = outfit.accessories || '';
-      
-      // Update arms and legs to match skin tone
-      document.querySelectorAll('.arm').forEach(arm => {
-        arm.textContent = skinData.arm;
+      // Update skin
+      document.querySelectorAll('#left-leg, #right-leg, #left-arm, #right-arm, #torso, #neck, #head').forEach(el => {
+        el.setAttribute('fill', outfit.skin);
       });
-      document.querySelectorAll('.leg').forEach(leg => {
-        leg.textContent = skinData.leg;
-      });
+      
+      // Update hair
+      const hairBack = document.getElementById('hair-back');
+      const hairFront = document.getElementById('hair-front');
+      if (outfit.hair.style) {
+        hairBack.innerHTML = outfit.hair.style.back.replace(/COLOR/g, outfit.hair.color);
+        hairFront.innerHTML = outfit.hair.style.front.replace(/COLOR/g, outfit.hair.color);
+      }
+      
+      // Update top
+      const topEl = document.getElementById('top-clothing');
+      if (outfit.top) {
+        const stroke = outfit.top.color === '#fff' ? '#ddd' : outfit.top.color;
+        topEl.innerHTML = outfit.top.svg.replace(/COLOR/g, outfit.top.color).replace(/STROKE/g, stroke);
+      } else {
+        topEl.innerHTML = '';
+      }
+      
+      // Update bottom (only if not wearing a dress)
+      const bottomEl = document.getElementById('bottom-clothing');
+      if (outfit.bottom && !(outfit.top && outfit.top.name === 'Dress')) {
+        const stroke = outfit.bottom.color === '#fff' ? '#ddd' : outfit.bottom.color;
+        bottomEl.innerHTML = outfit.bottom.svg.replace(/COLOR/g, outfit.bottom.color).replace(/STROKE/g, stroke);
+      } else {
+        bottomEl.innerHTML = '';
+      }
+      
+      // Update shoes
+      const shoesEl = document.getElementById('shoes');
+      if (outfit.shoes) {
+        const stroke = outfit.shoes.color === '#fff' ? '#ddd' : outfit.shoes.color;
+        shoesEl.innerHTML = outfit.shoes.svg.replace(/COLOR/g, outfit.shoes.color).replace(/STROKE/g, stroke);
+      } else {
+        shoesEl.innerHTML = '';
+      }
+      
+      // Update accessories
+      const accEl = document.getElementById('accessories');
+      if (outfit.accessory) {
+        accEl.innerHTML = outfit.accessory.svg;
+      } else {
+        accEl.innerHTML = '';
+      }
     }
     
     // Tab switching
@@ -420,69 +545,56 @@
       };
     });
     
-    // Reset outfit
     function resetOutfit() {
-      outfit = { skin: '👩', tops: null, bottoms: null, shoes: null, accessories: null };
+      outfit = {
+        skin: '#FFDAB9',
+        hair: { style: hairStyles[0], color: '#4a3728' },
+        top: null,
+        bottom: null,
+        shoes: null,
+        accessory: null
+      };
       renderItems();
       updateCharacter();
     }
     
-    // Random outfit
     function randomize() {
-      Object.keys(items).forEach(category => {
-        const categoryItems = items[category];
-        if (category === 'skin') {
-          outfit[category] = categoryItems[Math.floor(Math.random() * categoryItems.length)];
-        } else {
-          // 80% chance to pick something, 20% chance for nothing
-          if (Math.random() > 0.2) {
-            outfit[category] = categoryItems[Math.floor(Math.random() * categoryItems.length)];
-          } else {
-            outfit[category] = null;
-          }
-        }
-      });
+      outfit.skin = skinTones[Math.floor(Math.random() * skinTones.length)].color;
+      outfit.hair = {
+        style: hairStyles[Math.floor(Math.random() * hairStyles.length)],
+        color: hairColors[Math.floor(Math.random() * hairColors.length)]
+      };
+      
+      const randomTop = tops[Math.floor(Math.random() * tops.length)];
+      outfit.top = { ...randomTop, color: randomTop.colors[Math.floor(Math.random() * randomTop.colors.length)] };
+      
+      if (outfit.top.name !== 'Dress') {
+        const randomBottom = bottoms[Math.floor(Math.random() * bottoms.length)];
+        outfit.bottom = { ...randomBottom, color: randomBottom.colors[Math.floor(Math.random() * randomBottom.colors.length)] };
+      }
+      
+      const randomShoes = shoeStyles[Math.floor(Math.random() * shoeStyles.length)];
+      outfit.shoes = { ...randomShoes, color: randomShoes.colors[Math.floor(Math.random() * randomShoes.colors.length)] };
+      
+      if (Math.random() > 0.3) {
+        outfit.accessory = accessoryStyles[Math.floor(Math.random() * accessoryStyles.length)];
+      }
+      
       renderItems();
       updateCharacter();
       
-      // Celebration sparkles!
-      for (let i = 0; i < 10; i++) {
-        setTimeout(() => {
-          createSparkle(
-            Math.random() * window.innerWidth,
-            Math.random() * window.innerHeight
-          );
-        }, i * 100);
+      for (let i = 0; i < 8; i++) {
+        setTimeout(() => createSparkle(Math.random() * window.innerWidth, Math.random() * window.innerHeight), i * 80);
       }
     }
     
-    // Create sparkle effect
     function createSparkle(x, y) {
       const sparkle = document.createElement('div');
       sparkle.textContent = ['✨', '💖', '⭐', '💫'][Math.floor(Math.random() * 4)];
-      sparkle.style.cssText = `
-        position: fixed;
-        left: ${x}px;
-        top: ${y}px;
-        font-size: 24px;
-        pointer-events: none;
-        animation: sparkle-fly 1s ease-out forwards;
-        z-index: 1000;
-      `;
+      sparkle.style.cssText = `position:fixed;left:${x}px;top:${y}px;font-size:24px;pointer-events:none;animation:sparkle-fly 1s ease-out forwards;z-index:1000;`;
       document.body.appendChild(sparkle);
       setTimeout(() => sparkle.remove(), 1000);
     }
-    
-    // Add sparkle animation
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes sparkle-fly {
-        0% { transform: scale(0) rotate(0deg); opacity: 1; }
-        50% { transform: scale(1.5) rotate(180deg); opacity: 1; }
-        100% { transform: scale(0) rotate(360deg) translateY(-50px); opacity: 0; }
-      }
-    `;
-    document.head.appendChild(style);
     
     // Initialize
     renderItems();
