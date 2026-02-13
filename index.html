@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>✨ Sparkle Dress Up ✨</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 50%, #ffecd2 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    h1 {
+      color: #e75480;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+    }
+    
+    .sparkle {
+      animation: sparkle 1.5s ease-in-out infinite;
+    }
+    
+    @keyframes sparkle {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    
+    /* Character Display */
+    .character-stage {
+      background: linear-gradient(180deg, #fff5f8 0%, #ffe4ec 100%);
+      border-radius: 20px;
+      padding: 20px;
+      margin: 15px 0;
+      box-shadow: 0 8px 32px rgba(231, 84, 128, 0.2);
+      position: relative;
+      min-height: 320px;
+    }
+    
+    .character {
+      position: relative;
+      width: 200px;
+      height: 280px;
+      margin: 0 auto;
+    }
+    
+    .character-layer {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 180px;
+      transition: all 0.3s ease;
+    }
+    
+    /* Clothing tabs */
+    .tabs {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+    
+    .tab {
+      background: white;
+      border: 2px solid #ffb6c1;
+      border-radius: 20px;
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: #e75480;
+      font-weight: 600;
+    }
+    
+    .tab:hover, .tab.active {
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+      color: white;
+      border-color: #ff9a9e;
+      transform: scale(1.05);
+    }
+    
+    /* Items grid */
+    .items-panel {
+      background: white;
+      border-radius: 20px;
+      padding: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    
+    .item {
+      background: linear-gradient(135deg, #fff5f8 0%, #ffe4ec 100%);
+      border: 2px solid #ffb6c1;
+      border-radius: 15px;
+      padding: 12px 8px;
+      font-size: 2rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .item:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 15px rgba(231, 84, 128, 0.3);
+    }
+    
+    .item.selected {
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+      border-color: #e75480;
+      box-shadow: 0 0 20px rgba(231, 84, 128, 0.4);
+    }
+    
+    .item:active {
+      transform: scale(0.95);
+    }
+    
+    /* Action buttons */
+    .actions {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 15px;
+    }
+    
+    .btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    }
+    
+    .btn.reset {
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+    }
+    
+    /* Floating sparkles */
+    .floating-sparkle {
+      position: fixed;
+      pointer-events: none;
+      animation: float 3s ease-in-out infinite;
+      opacity: 0.6;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating sparkles decoration -->
+  <div class="floating-sparkle" style="top: 10%; left: 10%; font-size: 20px; animation-delay: 0s;">✨</div>
+  <div class="floating-sparkle" style="top: 20%; right: 15%; font-size: 16px; animation-delay: 0.5s;">💖</div>
+  <div class="floating-sparkle" style="top: 60%; left: 5%; font-size: 18px; animation-delay: 1s;">⭐</div>
+  <div class="floating-sparkle" style="top: 80%; right: 10%; font-size: 22px; animation-delay: 1.5s;">✨</div>
+  
+  <div class="container">
+    <h1><span class="sparkle">✨</span> Sparkle Dress Up <span class="sparkle">✨</span></h1>
+    
+    <div class="character-stage">
+      <div class="character">
+        <div class="character-layer" id="base">👩</div>
+        <div class="character-layer" id="hair-layer"></div>
+        <div class="character-layer" id="top-layer"></div>
+        <div class="character-layer" id="bottom-layer"></div>
+        <div class="character-layer" id="accessory-layer"></div>
+      </div>
+    </div>
+    
+    <div class="tabs">
+      <button class="tab active" data-category="hair">💇 Hair</button>
+      <button class="tab" data-category="tops">👚 Tops</button>
+      <button class="tab" data-category="bottoms">👖 Bottoms</button>
+      <button class="tab" data-category="accessories">👑 Bling</button>
+    </div>
+    
+    <div class="items-panel">
+      <div class="items-grid" id="items-grid">
+        <!-- Items loaded by JS -->
+      </div>
+    </div>
+    
+    <div class="actions">
+      <button class="btn reset" onclick="resetOutfit()">🔄 Start Over</button>
+      <button class="btn" onclick="randomize()">🎲 Surprise Me!</button>
+    </div>
+  </div>
+
+  <script>
+    // All the items for each category
+    const items = {
+      hair: ['👱‍♀️', '👩‍🦰', '👩‍🦱', '👩‍🦳', '💇‍♀️', '👸', '🧝‍♀️', '💆‍♀️'],
+      tops: ['👚', '👕', '👗', '👘', '🥻', '🧥', '💃', '👙'],
+      bottoms: ['👖', '🩳', '🩱', '👗', '🥿', '👠', '👟', '👢'],
+      accessories: ['👑', '🎀', '💎', '📿', '🕶️', '👒', '🌸', '⭐']
+    };
+    
+    // Current outfit state
+    let outfit = {
+      hair: null,
+      tops: null,
+      bottoms: null,
+      accessories: null
+    };
+    
+    let currentCategory = 'hair';
+    
+    // Render items for current category
+    function renderItems() {
+      const grid = document.getElementById('items-grid');
+      grid.innerHTML = '';
+      
+      items[currentCategory].forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'item' + (outfit[currentCategory] === item ? ' selected' : '');
+        div.textContent = item;
+        div.onclick = () => selectItem(item);
+        grid.appendChild(div);
+      });
+    }
+    
+    // Select an item
+    function selectItem(item) {
+      // Toggle: if same item clicked, remove it
+      if (outfit[currentCategory] === item) {
+        outfit[currentCategory] = null;
+      } else {
+        outfit[currentCategory] = item;
+      }
+      renderItems();
+      updateCharacter();
+      
+      // Little celebration effect
+      createSparkle(event.clientX, event.clientY);
+    }
+    
+    // Update character display
+    function updateCharacter() {
+      // For this simple version, we show items as overlays
+      // In a real version, we'd have actual clothing images
+      document.getElementById('hair-layer').textContent = outfit.hair || '';
+      document.getElementById('accessory-layer').textContent = outfit.accessories || '';
+      
+      // Show outfit summary below character
+      const wearing = [];
+      if (outfit.tops) wearing.push(outfit.tops);
+      if (outfit.bottoms) wearing.push(outfit.bottoms);
+      
+      // Update base emoji based on selections
+      let base = '👩';
+      if (outfit.hair === '👱‍♀️') base = '👱‍♀️';
+      else if (outfit.hair === '👩‍🦰') base = '👩‍🦰';
+      else if (outfit.hair === '👩‍🦱') base = '👩‍🦱';
+      else if (outfit.hair === '👩‍🦳') base = '👩‍🦳';
+      else if (outfit.hair === '👸') base = '👸';
+      else if (outfit.hair === '🧝‍♀️') base = '🧝‍♀️';
+      
+      document.getElementById('base').textContent = base;
+      document.getElementById('top-layer').textContent = outfit.tops || '';
+      document.getElementById('bottom-layer').textContent = outfit.bottoms || '';
+    }
+    
+    // Tab switching
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.onclick = () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentCategory = tab.dataset.category;
+        renderItems();
+      };
+    });
+    
+    // Reset outfit
+    function resetOutfit() {
+      outfit = { hair: null, tops: null, bottoms: null, accessories: null };
+      renderItems();
+      updateCharacter();
+    }
+    
+    // Random outfit
+    function randomize() {
+      Object.keys(items).forEach(category => {
+        const categoryItems = items[category];
+        outfit[category] = categoryItems[Math.floor(Math.random() * categoryItems.length)];
+      });
+      renderItems();
+      updateCharacter();
+      
+      // Celebration sparkles!
+      for (let i = 0; i < 10; i++) {
+        setTimeout(() => {
+          createSparkle(
+            Math.random() * window.innerWidth,
+            Math.random() * window.innerHeight
+          );
+        }, i * 100);
+      }
+    }
+    
+    // Create sparkle effect
+    function createSparkle(x, y) {
+      const sparkle = document.createElement('div');
+      sparkle.textContent = ['✨', '💖', '⭐', '💫'][Math.floor(Math.random() * 4)];
+      sparkle.style.cssText = `
+        position: fixed;
+        left: ${x}px;
+        top: ${y}px;
+        font-size: 24px;
+        pointer-events: none;
+        animation: sparkle-fly 1s ease-out forwards;
+        z-index: 1000;
+      `;
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 1000);
+    }
+    
+    // Add sparkle animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes sparkle-fly {
+        0% { transform: scale(0) rotate(0deg); opacity: 1; }
+        50% { transform: scale(1.5) rotate(180deg); opacity: 1; }
+        100% { transform: scale(0) rotate(360deg) translateY(-50px); opacity: 0; }
+      }
+    `;
+    document.head.appendChild(style);
+    
+    // Initialize
+    renderItems();
+  </script>
+</body>
+</html>
