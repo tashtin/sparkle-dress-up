@@ -55,8 +55,8 @@
     
     .character {
       position: relative;
-      width: 200px;
-      height: 300px;
+      width: 220px;
+      height: 320px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
@@ -93,23 +93,58 @@
       margin-top: 5px;
     }
     
+    .body-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .arm {
+      font-size: 35px;
+      transition: all 0.3s ease;
+    }
+    
+    .arm.left {
+      transform: scaleX(-1);
+    }
+    
     .top-clothing {
-      font-size: 75px;
+      font-size: 65px;
       line-height: 1;
       transition: all 0.3s ease;
     }
     
     .bottom-clothing {
-      font-size: 70px;
+      font-size: 60px;
       line-height: 1;
-      margin-top: -10px;
+      margin-top: -8px;
+      transition: all 0.3s ease;
+    }
+    
+    .legs-area {
+      display: flex;
+      gap: 8px;
+      margin-top: -5px;
+    }
+    
+    .leg {
+      font-size: 50px;
       transition: all 0.3s ease;
     }
     
     .shoes-area {
-      font-size: 45px;
-      margin-top: 0px;
+      display: flex;
+      gap: 5px;
+      margin-top: -10px;
+    }
+    
+    .shoe {
+      font-size: 30px;
       transition: all 0.3s ease;
+    }
+    
+    .shoe.left {
+      transform: scaleX(-1);
     }
     
     /* Clothing tabs */
@@ -248,9 +283,20 @@
         
         <!-- Body with clothing -->
         <div class="outfit-area">
-          <div class="top-clothing" id="top-display"></div>
+          <div class="body-row">
+            <div class="arm left">💪</div>
+            <div class="top-clothing" id="top-display"></div>
+            <div class="arm right">💪</div>
+          </div>
           <div class="bottom-clothing" id="bottom-display"></div>
-          <div class="shoes-area" id="shoes-display"></div>
+          <div class="legs-area">
+            <div class="leg">🦵</div>
+            <div class="leg" style="transform: scaleX(-1);">🦵</div>
+          </div>
+          <div class="shoes-area">
+            <div class="shoe left" id="shoe-left"></div>
+            <div class="shoe right" id="shoe-right"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -276,13 +322,25 @@
   </div>
 
   <script>
+    // Skin tone modifiers for arms/legs
+    const skinTones = {
+      '👩': { arm: '💪', leg: '🦵' },
+      '👩🏻': { arm: '💪🏻', leg: '🦵🏻' },
+      '👩🏼': { arm: '💪🏼', leg: '🦵🏼' },
+      '👩🏽': { arm: '💪🏽', leg: '🦵🏽' },
+      '👩🏾': { arm: '💪🏾', leg: '🦵🏾' },
+      '👩🏿': { arm: '💪🏿', leg: '🦵🏿' },
+      '👧': { arm: '💪', leg: '🦵' },
+      '👧🏻': { arm: '💪🏻', leg: '🦵🏻' },
+    };
+    
     // All the items for each category
     const items = {
       skin: ['👩', '👩🏻', '👩🏼', '👩🏽', '👩🏾', '👩🏿', '👧', '👧🏻'],
       tops: ['👚', '👕', '👗', '👘', '🥻', '🧥', '👙', '🎽'],
       bottoms: ['👖', '🩳', '🩱', '👗', '🥿', '🩰', '🩲', '🩴'],
       shoes: ['👠', '👟', '👢', '🥿', '👡', '👞', '🩴', '🩰'],
-      accessories: ['👑', '🎀', '💎', '🎩', '👒', '🎀', '🌸', '⭐']
+      accessories: ['👑', '🎀', '💎', '🎩', '👒', '🌺', '🌸', '⭐']
     };
     
     // Current outfit state
@@ -333,11 +391,23 @@
     
     // Update character display
     function updateCharacter() {
-      document.getElementById('face-display').textContent = outfit.skin || '👩';
+      const skin = outfit.skin || '👩';
+      const skinData = skinTones[skin] || skinTones['👩'];
+      
+      document.getElementById('face-display').textContent = skin;
       document.getElementById('top-display').textContent = outfit.tops || '';
       document.getElementById('bottom-display').textContent = outfit.bottoms || '';
-      document.getElementById('shoes-display').textContent = outfit.shoes || '';
+      document.getElementById('shoe-left').textContent = outfit.shoes || '';
+      document.getElementById('shoe-right').textContent = outfit.shoes || '';
       document.getElementById('accessory-display').textContent = outfit.accessories || '';
+      
+      // Update arms and legs to match skin tone
+      document.querySelectorAll('.arm').forEach(arm => {
+        arm.textContent = skinData.arm;
+      });
+      document.querySelectorAll('.leg').forEach(leg => {
+        leg.textContent = skinData.leg;
+      });
     }
     
     // Tab switching
