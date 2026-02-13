@@ -50,24 +50,65 @@
       margin: 15px 0;
       box-shadow: 0 8px 32px rgba(231, 84, 128, 0.2);
       position: relative;
-      min-height: 320px;
+      min-height: 340px;
     }
     
     .character {
       position: relative;
       width: 200px;
-      height: 280px;
+      height: 300px;
       margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     
-    .character-layer {
-      position: absolute;
-      width: 100%;
-      height: 100%;
+    /* Layered character parts */
+    .head-area {
+      position: relative;
+      width: 100px;
+      height: 100px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 180px;
+    }
+    
+    .accessory-top {
+      position: absolute;
+      top: -20px;
+      font-size: 40px;
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+    
+    .face {
+      font-size: 80px;
+      line-height: 1;
+    }
+    
+    .outfit-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: -10px;
+    }
+    
+    .top-clothing {
+      font-size: 70px;
+      line-height: 1;
+      transition: all 0.3s ease;
+    }
+    
+    .bottom-clothing {
+      font-size: 60px;
+      line-height: 1;
+      margin-top: -15px;
+      transition: all 0.3s ease;
+    }
+    
+    .shoes-area {
+      font-size: 40px;
+      margin-top: -5px;
       transition: all 0.3s ease;
     }
     
@@ -138,6 +179,12 @@
       transform: scale(0.95);
     }
     
+    /* None option */
+    .item.none-option {
+      font-size: 1rem;
+      color: #999;
+    }
+    
     /* Action buttons */
     .actions {
       display: flex;
@@ -193,18 +240,26 @@
     
     <div class="character-stage">
       <div class="character">
-        <div class="character-layer" id="base">👩</div>
-        <div class="character-layer" id="hair-layer"></div>
-        <div class="character-layer" id="top-layer"></div>
-        <div class="character-layer" id="bottom-layer"></div>
-        <div class="character-layer" id="accessory-layer"></div>
+        <!-- Head with accessory on top -->
+        <div class="head-area">
+          <div class="accessory-top" id="accessory-display"></div>
+          <div class="face" id="face-display">👩</div>
+        </div>
+        
+        <!-- Body with clothing -->
+        <div class="outfit-area">
+          <div class="top-clothing" id="top-display"></div>
+          <div class="bottom-clothing" id="bottom-display"></div>
+          <div class="shoes-area" id="shoes-display"></div>
+        </div>
       </div>
     </div>
     
     <div class="tabs">
-      <button class="tab active" data-category="hair">💇 Hair</button>
+      <button class="tab active" data-category="skin">👩 Skin</button>
       <button class="tab" data-category="tops">👚 Tops</button>
       <button class="tab" data-category="bottoms">👖 Bottoms</button>
+      <button class="tab" data-category="shoes">👠 Shoes</button>
       <button class="tab" data-category="accessories">👑 Bling</button>
     </div>
     
@@ -223,75 +278,66 @@
   <script>
     // All the items for each category
     const items = {
-      hair: ['👱‍♀️', '👩‍🦰', '👩‍🦱', '👩‍🦳', '💇‍♀️', '👸', '🧝‍♀️', '💆‍♀️'],
-      tops: ['👚', '👕', '👗', '👘', '🥻', '🧥', '💃', '👙'],
-      bottoms: ['👖', '🩳', '🩱', '👗', '🥿', '👠', '👟', '👢'],
-      accessories: ['👑', '🎀', '💎', '📿', '🕶️', '👒', '🌸', '⭐']
+      skin: ['👩', '👩🏻', '👩🏼', '👩🏽', '👩🏾', '👩🏿', '👧', '👧🏻'],
+      tops: ['👚', '👕', '👗', '👘', '🥻', '🧥', '👙', '🎽'],
+      bottoms: ['👖', '🩳', '🩱', '👗', '🥿', '🩰', '🩲', '🩴'],
+      shoes: ['👠', '👟', '👢', '🥿', '👡', '👞', '🩴', '🩰'],
+      accessories: ['👑', '🎀', '💎', '🎩', '👒', '🎀', '🌸', '⭐']
     };
     
     // Current outfit state
     let outfit = {
-      hair: null,
+      skin: '👩',
       tops: null,
       bottoms: null,
+      shoes: null,
       accessories: null
     };
     
-    let currentCategory = 'hair';
+    let currentCategory = 'skin';
     
     // Render items for current category
     function renderItems() {
       const grid = document.getElementById('items-grid');
       grid.innerHTML = '';
       
+      // Add "none" option for categories that can be empty
+      if (currentCategory !== 'skin') {
+        const noneDiv = document.createElement('div');
+        noneDiv.className = 'item none-option' + (outfit[currentCategory] === null ? ' selected' : '');
+        noneDiv.textContent = '❌';
+        noneDiv.onclick = () => selectItem(null);
+        grid.appendChild(noneDiv);
+      }
+      
       items[currentCategory].forEach((item, index) => {
         const div = document.createElement('div');
         div.className = 'item' + (outfit[currentCategory] === item ? ' selected' : '');
         div.textContent = item;
-        div.onclick = () => selectItem(item);
+        div.onclick = (e) => selectItem(item, e);
         grid.appendChild(div);
       });
     }
     
     // Select an item
-    function selectItem(item) {
-      // Toggle: if same item clicked, remove it
-      if (outfit[currentCategory] === item) {
-        outfit[currentCategory] = null;
-      } else {
-        outfit[currentCategory] = item;
-      }
+    function selectItem(item, event) {
+      outfit[currentCategory] = item;
       renderItems();
       updateCharacter();
       
       // Little celebration effect
-      createSparkle(event.clientX, event.clientY);
+      if (event) {
+        createSparkle(event.clientX, event.clientY);
+      }
     }
     
     // Update character display
     function updateCharacter() {
-      // For this simple version, we show items as overlays
-      // In a real version, we'd have actual clothing images
-      document.getElementById('hair-layer').textContent = outfit.hair || '';
-      document.getElementById('accessory-layer').textContent = outfit.accessories || '';
-      
-      // Show outfit summary below character
-      const wearing = [];
-      if (outfit.tops) wearing.push(outfit.tops);
-      if (outfit.bottoms) wearing.push(outfit.bottoms);
-      
-      // Update base emoji based on selections
-      let base = '👩';
-      if (outfit.hair === '👱‍♀️') base = '👱‍♀️';
-      else if (outfit.hair === '👩‍🦰') base = '👩‍🦰';
-      else if (outfit.hair === '👩‍🦱') base = '👩‍🦱';
-      else if (outfit.hair === '👩‍🦳') base = '👩‍🦳';
-      else if (outfit.hair === '👸') base = '👸';
-      else if (outfit.hair === '🧝‍♀️') base = '🧝‍♀️';
-      
-      document.getElementById('base').textContent = base;
-      document.getElementById('top-layer').textContent = outfit.tops || '';
-      document.getElementById('bottom-layer').textContent = outfit.bottoms || '';
+      document.getElementById('face-display').textContent = outfit.skin || '👩';
+      document.getElementById('top-display').textContent = outfit.tops || '';
+      document.getElementById('bottom-display').textContent = outfit.bottoms || '';
+      document.getElementById('shoes-display').textContent = outfit.shoes || '';
+      document.getElementById('accessory-display').textContent = outfit.accessories || '';
     }
     
     // Tab switching
@@ -306,7 +352,7 @@
     
     // Reset outfit
     function resetOutfit() {
-      outfit = { hair: null, tops: null, bottoms: null, accessories: null };
+      outfit = { skin: '👩', tops: null, bottoms: null, shoes: null, accessories: null };
       renderItems();
       updateCharacter();
     }
@@ -315,7 +361,16 @@
     function randomize() {
       Object.keys(items).forEach(category => {
         const categoryItems = items[category];
-        outfit[category] = categoryItems[Math.floor(Math.random() * categoryItems.length)];
+        if (category === 'skin') {
+          outfit[category] = categoryItems[Math.floor(Math.random() * categoryItems.length)];
+        } else {
+          // 80% chance to pick something, 20% chance for nothing
+          if (Math.random() > 0.2) {
+            outfit[category] = categoryItems[Math.floor(Math.random() * categoryItems.length)];
+          } else {
+            outfit[category] = null;
+          }
+        }
       });
       renderItems();
       updateCharacter();
@@ -361,6 +416,7 @@
     
     // Initialize
     renderItems();
+    updateCharacter();
   </script>
 </body>
 </html>
